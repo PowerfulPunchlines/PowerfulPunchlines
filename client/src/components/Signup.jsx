@@ -17,11 +17,12 @@ class Signup extends React.Component {
     this.submitSignup = this.submitSignup.bind(this);
     this.updateInputs = this.updateInputs.bind(this);
   }
-
-  submitSignup(signup, e) {
-    e.preventDefault();
+//make a post request to the server. the server will put it into the databse.
+  submitSignup(signup) {
+    // e.preventDefault();
     axios.post('/signup', {username: signup.username, password: signup.password})
       .then(({response}) => {
+        //this line will take you to /profile
         this.props.history.push('/profile');
       })
       .catch(err => {
@@ -30,6 +31,7 @@ class Signup extends React.Component {
 
   }
 
+ //updates the state per letter, event = onChange
   updateInputs(e) {
     var userInput = this.state.userInput;
     var name = e.target.name;
@@ -53,7 +55,7 @@ class Signup extends React.Component {
           </label>
           <label>
             Password:
-            <input name="password" type="text" onChange={this.updateInputs}/>
+            <input name="password" type="password" onChange={this.updateInputs}/>
           </label>
           <input type="submit" value="Submit" />
         </form>
