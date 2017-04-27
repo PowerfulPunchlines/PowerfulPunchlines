@@ -8,7 +8,7 @@ class Profile extends React.Component {
     super(props);
 
     this.state = {
-        userInfo: {}
+        userTrip: {}
     }
     this.getProfile = this.getProfile.bind(this);
   }
@@ -20,7 +20,10 @@ class Profile extends React.Component {
   getProfile() {
       axios.get('/profile')
         .then(result => {
-           console.log(result.data)
+            var userTrip = this.state.userTrip;
+            userTrip['tripName'] = result.data[0].tripName;
+            console.log(userTrip);
+            this.setState({userTrip})
         })
         .catch(error => {
             console.error(error);
@@ -31,6 +34,7 @@ class Profile extends React.Component {
     return (
         <div>
             <h3>Profile Page</h3>
+            <div>{this.state.userTrip.tripName}</div>
         </div>
     )
   }

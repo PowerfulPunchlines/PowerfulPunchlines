@@ -12078,7 +12078,7 @@ var Signup = function (_React$Component) {
               'label',
               null,
               'Password:',
-              _react2.default.createElement('input', { name: 'password', type: 'text', onChange: this.updateInputs })
+              _react2.default.createElement('input', { name: 'password', type: 'password', onChange: this.updateInputs })
             ),
             _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
           )
@@ -29317,7 +29317,7 @@ module.exports = g;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -29345,50 +29345,60 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Profile = function (_React$Component) {
-  _inherits(Profile, _React$Component);
+    _inherits(Profile, _React$Component);
 
-  function Profile(props) {
-    _classCallCheck(this, Profile);
+    function Profile(props) {
+        _classCallCheck(this, Profile);
 
-    var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 
-    _this.state = {
-      userInfo: {}
-    };
-    _this.getProfile = _this.getProfile.bind(_this);
-    return _this;
-  }
-
-  _createClass(Profile, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.getProfile();
+        _this.state = {
+            userTrip: {}
+        };
+        _this.getProfile = _this.getProfile.bind(_this);
+        return _this;
     }
-  }, {
-    key: 'getProfile',
-    value: function getProfile() {
-      _axios2.default.get('/profile').then(function (result) {
-        console.log(result.data);
-      }).catch(function (error) {
-        console.error(error);
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h3',
-          null,
-          'Profile Page'
-        )
-      );
-    }
-  }]);
 
-  return Profile;
+    _createClass(Profile, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.getProfile();
+        }
+    }, {
+        key: 'getProfile',
+        value: function getProfile() {
+            var _this2 = this;
+
+            _axios2.default.get('/profile').then(function (result) {
+                var userTrip = _this2.state.userTrip;
+                userTrip['tripName'] = result.data[0].tripName;
+                console.log(userTrip);
+                _this2.setState({ userTrip: userTrip });
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Profile Page'
+                ),
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    this.state.userTrip.tripName
+                )
+            );
+        }
+    }]);
+
+    return Profile;
 }(_react2.default.Component);
 
 exports.default = Profile;

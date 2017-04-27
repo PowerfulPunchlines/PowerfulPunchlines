@@ -13,7 +13,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.get('/profile', function (req, res) {
-  res.send('hi')
+  var query = 'SELECT tripName FROM trips INNER JOIN user_trips ON trips.id = user_trips.trip_id WHERE user_id = 3';
+  db.dbConnection.query(query, (error, results, field) => {
+    res.send(results)
+  })
 })
 
 app.post('/login', function (req, res){
@@ -26,8 +29,9 @@ app.post('/login', function (req, res){
 app.post('/signup', function (req, res){
 
   var userName = req.body.username;
+  var passWord = req.body.password;
 
-  var query = `INSERT INTO users(username) VALUES ('${userName}')`;
+  var query = `INSERT INTO users(username, password) VALUES ('${userName}', '${passWord}')`;
   db.dbConnection.query(query);
 
   res.send(req.body.username)
