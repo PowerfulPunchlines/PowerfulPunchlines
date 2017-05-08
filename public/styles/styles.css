@@ -1,11 +1,7 @@
-
-
 #headercontainer {
     height: 150px;
     font-family: 'Montserrat', sans-serif;
-
 }
-
 
 #login {
     float: right;
@@ -20,9 +16,6 @@
     margin: auto;
 }
 
-#createTripHeader {
-}
-
 #createTripSubheader {
 	color: grey;
 }
@@ -31,12 +24,35 @@
 	width: 600px;
 }
 
-#firstHalf {
+#firstHalfCreateTrip {
 	float: left;
 	width: 300px;
 }
 
-#secondHalf {
+#secondHalfCreateTrip {
 	float: right;
+	width: 300px;
+}
+
+#contributeTripSubheader {
+	color: grey;
+}
+
+#contributeToTripParent {
+	font-family: arial, sans-serif;
+}
+
+#contributeToTrip {
+	padding: 0 auto;
+	width: 600px;
+}
+
+#contributeFirstHalf {
+	float: left;
+	width: 300px;
+}
+
+#contributeSecondHalf{
+	float:right;
 	width: 300px;
 }

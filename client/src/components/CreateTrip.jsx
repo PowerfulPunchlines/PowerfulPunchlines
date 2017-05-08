@@ -15,7 +15,7 @@ class CreateTrip extends React.Component {
         <h4 id="createTripSubheader">Get Trippy!</h4>
 
       <form id="createTripParent">
-      <div id="firstHalf">
+      <div id="firstHalfCreateTrip">
           <label>
             Trip Name <br/>           
             <input name="tripName" type="text" />
@@ -31,7 +31,7 @@ class CreateTrip extends React.Component {
             <input name="dateRange" type ="text"/><input type="submit" value="+"/><br/><br/>
           </label>
       </div>
-      <div id="secondHalf">
+      <div id="secondHalfCreateTrip">
            <label>
             Estimated Cost <br/>
             <input name="estimatedCost" type="text" placeholder="$"/><br/><br/>

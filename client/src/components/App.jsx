@@ -14,8 +14,9 @@ class App extends React.Component {
       <div>
         <Header />
         <div id="frontpic">
-            <img src="images/Front_page_pic.jpg"></img>
-            <Link to="/createTrip">Add a trip</Link>
+            <img src="images/Front_page_pic.jpg"></img><br/><br/>
+            <Link to="/createTrip">Add a trip</Link><br/>
+            <Link to="/contributeToTrip">Contribute to a Trip</Link>
         </div>
       </div>
     )
